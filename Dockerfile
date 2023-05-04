@@ -1,4 +1,5 @@
-FROM node:boron
+FROM node:18
 WORKDIR /app
 COPY . .
-CMD NODE_URLS=http://*:$PORT npm run server
+RUN npm install
+CMD npm run server
