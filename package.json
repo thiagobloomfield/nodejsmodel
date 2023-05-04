@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/prodatamobilitybrasil/nodejs#readme",
   "scripts": {
-    "start": "tsc && node ./dist/app",
+    "start": "npm install && npx tsc && node ./dist/app",
     "commit": "cz",
     "test": "jest",
     "test-coverage": "jest --coverage",
