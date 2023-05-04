@@ -16,7 +16,8 @@
   "scripts": {
     "start": "tsc && nodemon ./dist/app",
     "commit": "cz",
-    "test": "jest"
+    "test": "jest",
+    "test-coverage": "jest --coverage"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
