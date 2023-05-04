@@ -17,7 +17,9 @@
     "start": "tsc && nodemon ./dist/app",
     "commit": "cz",
     "test": "jest",
-    "test-coverage": "jest --coverage"
+    "test-coverage": "jest --coverage",
+    "build": "tsc",
+    "server": "nodemon ./dist/app"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
