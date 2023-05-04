@@ -3,9 +3,9 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import indexRoutes from './routes/index';
  
-const app = express();
+const server = express();
 
-app.use(indexRoutes);
-app.use(bodyParser.json());
+server.use(indexRoutes);
+server.use(bodyParser.json());
 
-app.listen(3000);
+server.listen(3000);
