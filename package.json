@@ -9,7 +9,7 @@
   },
   "author": "Prodata",
   "license": "ISC",
-  "bugs": {
+  "bugs": { 
     "url": "https://github.com/prodatamobilitybrasil/nodejs/issues"
   },
   "homepage": "https://github.com/prodatamobilitybrasil/nodejs#readme",
