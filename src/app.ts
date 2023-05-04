@@ -8,4 +8,4 @@ const server = express();
 server.use(indexRoutes);
 server.use(bodyParser.json());
 
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
