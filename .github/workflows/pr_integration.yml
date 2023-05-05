@@ -5,44 +5,40 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  # prepare:
-  #   name: prepare
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0 
-  #     - name: Install dependencies
-  #       run: npm install
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
+      - name: Install dependencies
+        run: npm install
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
+      - name: Test and coverage
+        run: npm run test-coverage
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  # sonarcloud:
-  #   name: SonarCloud
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0 
-  #     - name: Test and coverage
-  #       run: npm run test-coverage
-  #     - name: SonarCloud Scan
-  #       uses: SonarSource/sonarcloud-github-action@master
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  # deploy:
-  #   name: deploy
-  #   needs: sonarcloud
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: akhileshns/heroku-deploy@v3.12.13
-  #       with:
-  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #         heroku_app_name: "nodejsmodel"
-  #         heroku_email: "thiagobloomf@gmail.com"
+  deploy:
+    name: deploy
+    needs: sonarcloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.13
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "nodejsmodel"
+          heroku_email: "thiagobloomf@gmail.com"
 
   e2e:
+    needs: deploy
     name: Cypress run
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.16.0-chrome90-ff88
