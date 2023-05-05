@@ -9,7 +9,7 @@ let resultPost: any = null;
 
 Given('Eu chame a API post com dados {string} {string} {string}', (id, name, birthDate) => {
   cy
-    .request("POST", "http://localhost:3000/",
+    .request("POST", "https://nodejsmodel.herokuapp.com/",
       {
         "id": id,
         "name": name,
