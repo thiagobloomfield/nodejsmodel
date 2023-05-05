@@ -13,8 +13,7 @@ describe('CustomerController', () => {
     const request = {
       body: customer
     }
-    const expectedResult: Customer[] = [];
-    expectedResult.push(customer);
+    const expectedResult: Customer = customer;
     expect(customerController.addNewCustomer(request)).toEqual(expectedResult);
   });
 });
