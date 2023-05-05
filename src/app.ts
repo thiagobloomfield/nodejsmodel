@@ -6,6 +6,10 @@ import indexRoutes from './routes/index';
 const server = express();
 const port = process.env.PORT || 3000;
 
+server.use(express.json());
+server.use(express.urlencoded({
+    extended: true
+}));
 server.use(indexRoutes);
 server.use(bodyParser.json());
 
