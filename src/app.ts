@@ -4,8 +4,11 @@ import bodyParser from 'body-parser';
 import indexRoutes from './routes/index';
  
 const server = express();
+const port = process.env.PORT || 3000;
 
 server.use(indexRoutes);
 server.use(bodyParser.json());
 
-server.listen(process.env.PORT || 3000);
+server.listen(port);
+
+console.log('Aplicação rodando na porta ' + port)
