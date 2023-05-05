@@ -5,15 +5,15 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  prepare:
-    name: prepare
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 
-      - name: Install dependencies
-        run: npm install
+  # prepare:
+  #   name: prepare
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0 
+  #     - name: Install dependencies
+  #       run: npm install
 
   # sonarcloud:
   #   name: SonarCloud
@@ -51,7 +51,7 @@ jobs:
       - name: Cypress run 
         uses: cypress-io/github-action@v2
         with:
-          command: npx cypress run
+          command: npm install && npx cypress run
           # command: npx cypress run --config-file config/${{github.event.inputs.amb || env.DEFAULT_AMB}}.json --browser ${{github.event.inputs.browser || env.DEFAULT_BROWSER}} --env grepTags=${{github.event.inputs.tag || env.DEFAULT_TAG}}
       # - name: Generate Allure Report
       #   uses: simple-elf/allure-report-action@master
