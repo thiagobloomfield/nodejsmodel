@@ -21,3 +21,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  
+  deploy:
+    name: Deploy
+    needs: sonarcloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.13
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "nodejsmodel"
+          heroku_email: "thiagobloomf@gmail.com"
+
+  e2e:
+    needs: deploy
+    name: Cypress run
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node14.16.0-chrome90-ff88
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Cypress run 
+        uses: cypress-io/github-action@v2
+        with:
+          command: npx cypress run --record --key ab3689c3-40cb-4e7c-9f2e-02c59874c07e
