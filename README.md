@@ -36,3 +36,24 @@ feat(cod-XPTO): implementa a arquitetura base
 git add .
 npm run commit
 ```
+
+## Testes
+
+### Testes unitários
+Para testes unitários usamos a ferramenta JEST
+https://jestjs.io/pt-BR/
+
+#### Uso
+```sh
+npm run test
+```
+
+### Testes integrados
+Para testes e2e, integrados e automatizados utilizamos a ferramenta Cypress + Cucumber
+https://www.cypress.io/
+https://github.com/badeball/cypress-cucumber-preprocessor
+
+#### Uso
+```sh
+npm run e2e
+```

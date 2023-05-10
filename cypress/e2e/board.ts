@@ -2,6 +2,7 @@ import {
   Then,
   Given
 } from "@badeball/cypress-cucumber-preprocessor";
+import '@shelex/cypress-allure-plugin';
 
 let resultPost: any = null;
 
