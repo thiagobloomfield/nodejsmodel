@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 import createBundler from "@bahmutov/cypress-esbuild-preprocessor";
 import { addCucumberPreprocessorPlugin } from "@badeball/cypress-cucumber-preprocessor";
 import createEsbuildPlugin from "@badeball/cypress-cucumber-preprocessor/esbuild";
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
 
 export default defineConfig({
   projectId: "j6auos",
@@ -19,6 +20,8 @@ export default defineConfig({
           plugins: [createEsbuildPlugin(config)],
         })
       );
+
+      allureWriter(on, config);
 
       return config;
     },
