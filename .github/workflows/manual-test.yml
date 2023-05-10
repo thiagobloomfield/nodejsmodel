@@ -40,7 +40,7 @@ jobs:
       - name: Cypress run 
         uses: cypress-io/github-action@v2
         with:
-          working-directory: /
+          working-directory: /nodejsmodel
           command: npx cypress run
           # --config-file config/${{github.event.inputs.amb || env.DEFAULT_AMB}}.json --browser ${{github.event.inputs.browser || env.DEFAULT_BROWSER}} --env grepTags=${{github.event.inputs.tag || env.DEFAULT_TAG}}
       - name: Generate Allure Report
