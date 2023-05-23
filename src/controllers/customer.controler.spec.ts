@@ -1,5 +1,6 @@
 import { Customer } from '../models/customer';
 import { CustomerController } from './customer.controler';
+import { expect } from '@jest/globals';
 
 const customerController: CustomerController = new CustomerController();
 
