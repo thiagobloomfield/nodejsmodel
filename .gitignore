@@ -4,5 +4,6 @@
 **/coverage/
 **/allure-results/
 **/cypress/videos
+**/cypress/videos/*
 
 .npmrc

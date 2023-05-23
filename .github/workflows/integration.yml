@@ -2,7 +2,7 @@ name: Integration (Default Branchs)
 
 on:
   push:
-    branches: [ "main", development ]
+    branches: [ "main", "development", "homolog" ]
 
 jobs:
   sonarcloud:
